@@ -20,18 +20,18 @@ def resize20(image):
     plt.imshow(cv2.cvtColor(gray_resize, cv2.COLOR_GRAY2RGB))
     plt.show()
 
-    return gray_resize.reshape(-1,400).astype(np.float)
+    return gray_resize.reshape(-1,400).astype(np.float32)
 
 def check(test, train, train_labels):
     knn = cv2.ml.KNearest_create()
-    knn.train(train.cv2.ml.ROW_SAMPLE,train_labels)
+    knn.train(train,cv2.ml.ROW_SAMPLE,train_labels)
     ret, result, neighbours, dist = knn.findNearest(test, k=5)
     return result
 
 train, train_labels = load_train_data(FILE_NAME)
 
-for fime_name in glob.glob('/Users/gimminji/Desktop/2022/Python-Data-Analysis-and-Image-Processing/test_*.png'):
-    test = resize20(FILE_NAME)
+for fime_name in glob.glob('/Users/gimminji/Desktop/2022/Python-Data-Analysis-and-Image-Processing/test_1.png'):
+    test = resize20(fime_name)
     result = check(test, train, train_labels)
     print(result)
 
