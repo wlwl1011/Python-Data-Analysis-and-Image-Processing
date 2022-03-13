@@ -1,5 +1,4 @@
-#유사 다각형 구하기
-
+#여러개의 벡터가 있을 때 외곽으로만 구성된 다각형을 찾고자할 때#contour의 사각형 외곽찾기
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -23,10 +22,9 @@ image = cv2.drawContours(image, contours, -1, (255,0,0),3)
 plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 plt.show()
 
-contour = contours[2]
-epsilon = 0.01 * cv2.arcLength(contour,True)
-approx = cv2.approxPolyDP(contour,epsilon,True)
-image = cv2.drawContours(image,[approx],-1, (0,0,255),3)
+contour = contours[0]
+hull = cv2.convexHull(contour)
+image = cv2.drawContours(image,[hull],-1, (0,0,255),3)
 
 plt.imshow(cv2.cvtColor(image,cv2.COLOR_BGR2RGB))
 plt.show() 
