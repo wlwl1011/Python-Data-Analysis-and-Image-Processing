@@ -24,7 +24,7 @@ plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 plt.show()
 
 contour = contours[2]
-epsilon = 0.01 * cv2.arcLength(contour,True)
+epsilon = 0.01 * cv2.arcLength(contour,True) # contour의 길이로 부터 받아오는데, 길이를 줄이면 줄일 수록 원래의 음각과 비슷해진다.
 approx = cv2.approxPolyDP(contour,epsilon,True)
 image = cv2.drawContours(image,[approx],-1, (0,0,255),3)
 
