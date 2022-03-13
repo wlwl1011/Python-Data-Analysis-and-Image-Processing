@@ -26,7 +26,7 @@ ret, result, neighbours, dist = knn.findNearest(newcomer,3)
 
 print("result",result)
 print("neighbours",neighbours)
-print("dist",dist)
+print("dist",dist)#이웃 데이터에 대한 거리
 
 plt.show()
 
