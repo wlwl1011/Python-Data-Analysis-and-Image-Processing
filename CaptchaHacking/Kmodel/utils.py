@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import re
 
 BLUE = 0
 GREEN = 1
@@ -48,4 +49,24 @@ def resize20(image):
     resized = cv2.resize(image,(20,20))
     return resized.reshape(-1,400).astype(np.float32)        
 
-    
+def remove_first_0(string):
+    temp = []
+    for i in string:
+        if i == '+' or i=='-' or i=="*":
+            temp.append(i)
+    split = re.split('\*|\+|-',string)
+    i =0
+    temp_count = 0
+    result = ""
+    for a in split:
+        a = a.lstrip('0')
+        if a == '':
+            a=0
+        result += a
+        if i <len(split) -1:
+            result += temp[temp_count]
+            temp_count = temp_count+1
+        i + i+1
+    return result        
+
+                    

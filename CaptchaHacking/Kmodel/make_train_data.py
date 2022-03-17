@@ -2,7 +2,7 @@ import os
 import cv2
 import utils
 path = '/Users/gimminji/Desktop/2022/Python-Data-Analysis-and-Image-Processing/CaptchaHacking/Kmodel/training_data/'
-image = cv2.imread("/Users/gimminji/Desktop/2022/Python-Data-Analysis-and-Image-Processing/CaptchaHacking/Kmodel/images/5.png")
+image = cv2.imread('/Users/gimminji/Desktop/2022/Python-Data-Analysis-and-Image-Processing/CaptchaHacking/Kmodel/images/4.png')
 chars = utils.extract_chars(image)
 
 #데이터 레이블링
@@ -13,6 +13,7 @@ for char in chars:
 
     if input >= 48 and input <= 57:
         name = str(input-48)
+        print(name)
         file_count = len(next(os.walk(path+name+'/'))[2])
         cv2.imwrite(path+str(input-48)+'/'+
         str(file_count+1)+'.png',resized)
