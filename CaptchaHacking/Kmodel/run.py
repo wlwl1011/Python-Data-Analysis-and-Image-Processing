@@ -10,7 +10,6 @@ import time
 host = "http://localhost:10000"
 url = '/start'
 
-
 FILE_NAME = '/Users/gimminji/Desktop/2022/Python-Data-Analysis-and-Image-Processing/CaptchaHacking/Kmodel/trained.npz'
 
 with np.load(FILE_NAME) as data:
@@ -64,7 +63,7 @@ with requests.Session() as s:
 
         #특정 폴더에 이미지 파일을 다운함    
         response = s.get(img_url,stream=True)
-        target_image = '/.target_images/'+str(i)+'.png'
+        target_image = '/Users/gimminji/Desktop/2022/Python-Data-Analysis-and-Image-Processing/CaptchaHacking/Kmodel/target_images/'+str(i)+'.png'
         with open(target_image,'wb') as out_file:
             shutil.copyfileobj(response.raw, out_file)
         del response
